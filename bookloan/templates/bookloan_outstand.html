@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content%} 
+
+<title>Book Loan Outstanding Library</title>
+<style>
+    .pagination {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end; /* Align items to the right */
+      }
+      .pagination a {
+        margin: 0 5px;
+      }
+      .pagination a, .pagination span {
+        margin: 0 5px;
+        padding: 8px 16px;
+        text-decoration: none;
+        color: black;
+        border: 1px solid #ddd;
+      }
+      .pagination a:hover {
+        background-color: #ddd;
+      }
+      .pagination .active {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+      }
+      .disabled {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+</style>
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Book Loan Outstanding</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+        <li class="breadcrumb-item active">Book Loan</li>
+        <li class="breadcrumb-item active">Outstanding</li>
+        <li class="breadcrumb-item active">List</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            All of the Book Loan that near to Overdue Date this far. 
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Book Loan Outstanding List Table
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-stripped">
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Member Name</th>
+                <th>Librarian Name </th>
+                <th>Loan Date</th>
+                <th>Due Date</th>
+                <th>Return Date</th>
+                <th>Status</th>
+                <th>Action</th>     
+            </tr>
+        </thead>
+        <tbody>
+            {% for bookloan in bookloan_outstand%}
+            <tr>
+                <td>{{bookloan.book_title}}</td>
+                <td>{{bookloan.member_name}}</td>
+                <td>{{bookloan.librarian_name}}</td>                           
+                <td>{{bookloan.loan_date}}</td>                           
+                <td>{{bookloan.due_date}}</td>                           
+                <td>{{bookloan.return_date}}</td>
+                <td class="text-xs font-weight-bold text-warning text-uppercase mb-1">OUTSTANDING</td>            
+                
+                <td>
+                    <a href = {% url 'edit_bookloan' bookloan.id%} class="btn btn-success btn-sm">Edit</a>
+                    <a href = {% url 'delete_bookloan' bookloan.id %} class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <b>Total Data: {{total_outstand_data}}</b>
+    <div class="pagination">
+        {% if outstand_previous_page %}
+        <a href="?page={{ outstand_previous_page|cut:'='|last }}">Previous</a>
+        {% else %}
+        <a href="#" class="disabled">Previous</a>
+        {% endif %}
+        <span>Page {{current_page }}</span>
+        {% if outstand_next_page %}
+        <a href="?page={{ outstand_next_page|cut:'='|last }}">Next</a>
+        {% else %}
+        <a href="#" class="disabled">Next</a>
+        {% endif %}   
+    </div>
+</div>
+</div>
+</div>
+{% endblock content%}

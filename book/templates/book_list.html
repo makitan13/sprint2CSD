@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content%} 
+
+    <title>Book List Library</title>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Book List</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+            <li class="breadcrumb-item active">Book</li>
+            <li class="breadcrumb-item active">List</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                All of the Table that already registered this far. <a href='/book/add'>Add new Book</a> 
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Book List Table
+            </div>
+            <div class="card-body">
+                <table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                            <th>ISBN</th>
+                            <th>Published Date</th>
+                            <th>Action</th>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        {% for book in book_list%}
+                        <tr>
+                            <td><a href = {% url 'detail_book' book.id%}> {{book.title}}</a></td>
+                            <td>{{book.author}}</td>
+                            <td>{{book.category_name}}</td>
+                            <td>{{book.isbn}}</td>                           
+                            <td>{{book.published_date}}</td>
+                            <td>
+                                <a href = {% url 'edit_book' book.id%} class="btn btn-success btn-sm">Edit</a>
+                                <a href = {% url 'delete_book' book.id %} class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content%}

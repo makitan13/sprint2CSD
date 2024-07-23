@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content%} 
+<!DOCTYPE html>
+<style>
+    .pagination {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end; /* Align items to the right */
+      }
+      .pagination a {
+        margin: 0 5px;
+      }
+      .pagination a, .pagination span {
+        margin: 0 5px;
+        padding: 8px 16px;
+        text-decoration: none;
+        color: black;
+        border: 1px solid #ddd;
+      }
+      .pagination a:hover {
+        background-color: #ddd;
+      }
+      .pagination .active {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+      }
+      .disabled {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+</style>
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Librarian Login History</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+        <li class="breadcrumb-item active">Librarian</li>
+        <li class="breadcrumb-item active">Login History</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            All of the Librarian Login History that already registered this far    
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Librarian Login History Table
+        </div>
+        <div class="card-body">
+            <table class = "table table-bordered table-stripped">
+            <thead >
+            <tr>
+                <th>ID</th>
+                <th>Librarian Name</th>
+                <th>Login At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for login_history in librarian_login_history%}
+            <tr>
+                <td>{{login_history.id}}
+                <td>{{login_history.librarian_name}} </td> 
+                <td>{{login_history.date_login}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <b>Total Data: {{total_data}}</b>
+    <div class="pagination">
+        {% if previous_page %}
+        <a href="?page={{current_page|add:"-1"}}">Previous</a>
+        {% else %}
+        <a href="#" class="disabled">Previous</a>
+        {% endif %}
+        <span>Page {{current_page }}</span>
+        {% if next_page %}
+        <a href="?page={{ current_page|add:"1"}}">Next</a>
+        {% else %}
+        <a href="#" class="disabled">Next</a>
+        {% endif %}  
+    </div>
+</div>
+</div>
+</div>
+{% endblock content%}

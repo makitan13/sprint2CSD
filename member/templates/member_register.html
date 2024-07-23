@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Librarian Register Form</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<style>
+	.login-form {
+		width: 340px;
+    	margin: 120px auto;
+	}
+    .login-form form {
+    	margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+<div class="login-form">
+    <form method="post">
+        {% csrf_token %}
+       <h2 class="text-center">Librarian Register</h2>       
+       <div class="form-group">
+           {{form.first_name}}
+        </div>
+        <div class="form-group">
+            {{form.last_name}}
+        </div>
+        <div class="form-group">
+            {{form.email}}
+        </div>
+        <div class="form-group">
+            {{form.phone_number}}
+        </div>
+        <div class="form-group">
+            {{form.username}}
+        </div>
+        <div class="form-group">
+            {{form.password}}
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </div>
+        <div class="clearfix">
+            <a href="/member/login" class="pull-right">Already Register?</a>
+        </div>        
+    </form>
+    <p class="text-center"><a href="/">Back To Lobby</a></p>
+</div>
+</body>
+</html>

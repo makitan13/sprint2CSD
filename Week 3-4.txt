@@ -1,0 +1,32 @@
+Week 3-4
+- Gitlab
+- Django advanced with API
+- Postman introduction
+
+Expected:
+New trainee is able to create an extension of their simple library website to perform these actions:
+- The site should have "Category" master
+- The book record now should be able to have a cover image
+- The book master should now be attached a category
+- API to get book list filtered by year, by category
+- API to search for book list filtered by name
+- API to get detailed info for each book
+- API to loan selected book
+- API to register new membership
+- API to login as member
+- API to logout as member
+- API to change profile member
+- API to change password as a member
+- API to get current book loan and its overdue 
+- API to login as librarian
+- API to logout as librarian
+- API to list of near outstanding books (need paging)
+- API to list of overdue books (need paging)
+- API to change password as a librarian
+- Created a postman collection for these functions
+
+Objective:
+- Trainee understands how Django works with API 
+- Trainee have a familiarity with postman and able to utilize it to test API
+- Trainee understands how API interconnectivity works and how to secure them
+- Trainee is able to work with Git and understands the concept of Push, Pull, Commit, and Clone

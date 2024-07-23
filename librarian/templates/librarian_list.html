@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content%} 
+
+<title>Librarian List Library</title>
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Librarian List</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+        <li class="breadcrumb-item active">Librarian</li>
+        <li class="breadcrumb-item active">List</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            All of the Librarian that already registered this far    
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Librarian List Table
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+        <thead >
+            <tr>
+                <th>Librarian Name</th>
+                <th>Librarian Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for librarian in librarian_list%}
+            <tr>
+                <td>{{librarian.first_name}} {{librarian.last_name}}</td>
+                <td>{{librarian.username}}</td>
+                <td>{{librarian.email}}</td>                           
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+{% endblock content%}

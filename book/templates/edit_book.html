@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4 col-lg-8 px-5">
+    <h2 class="text-center">Edit Book</h2>
+    <form method="post" class="card mx-auto" enctype = "multipart/form-data">
+        {% csrf_token %}
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Title</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ form.title }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Author</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ form.author }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Category</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ form.category}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">ISBN</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ form.isbn }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Publication Date</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ form.published_date }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Cover Image</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ form.cover_image }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Description</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ form.description }}
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9 text-secondary">
+                        <button type="submit" class="btn btn-primary px-4">Update Book
+                    </div>
+                </div>
+    </form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content%} 
+
+<title>Book Loan List Library</title>
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Book Loan List</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+        <li class="breadcrumb-item active">Book Loan</li>
+        <li class="breadcrumb-item active">List</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            All of the Book Loan that already registered this far.  <a href='/bookloan/add'>Add new Book Loan</a>   
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Book Loan List Table
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-stripped">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Member</th>
+                <th>Librarian</th>
+                <th>Loan Date</th>
+                <th>Due Date</th>
+                <th>Return Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bookloan in bookloan_list%}
+            <tr>
+                <td>{{bookloan.book_title}}</td>
+                <td>{{bookloan.member_name}}</td>
+                <td>{{bookloan.librarian_name}}</td>                           
+                <td>{{bookloan.loan_date}}</td>                           
+                <td>{{bookloan.due_date}}</td>                           
+                <td>{{bookloan.return_date}}</td>
+                <td>
+                    <a href = {% url 'edit_bookloan' bookloan.id%} class="btn btn-success btn-sm">Edit</a>
+                    <a href = {% url 'delete_bookloan' bookloan.id %} class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+{% endblock content%}

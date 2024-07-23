@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content%} 
+
+<title>Member List Library</title>
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Member List</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+        <li class="breadcrumb-item active">Member</li>
+        <li class="breadcrumb-item active">List</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            All of the Member that already registered this far.  <a href='/member/add'>Add new member</a> 
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Member List Table
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for member in member_list%}
+                <tr>
+                    <td>{{member.first_name}} {{member.last_name}}</td>
+                    <td>{{member.email}}</td>                           
+                    <td>{{member.phone_number}}</td>
+                    <td>
+                        <a href = {% url 'edit_member' member.id%} class="btn btn-success btn-sm">Edit</a>
+                        <a href = {% url 'delete_member' member.id %} class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
+
+{% endblock content%}

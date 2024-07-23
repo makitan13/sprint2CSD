@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% csrf_token %}
+<div class="container mt-4 col-lg-8 px-5">
+    <h2 class="text-center">{{ book_detail.title }}</h2>
+    <form method="post" class="card mx-auto">
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                    {% if book_detail.cover_image %}
+                            <img src="{{ book_detail.cover_image }}" alt="{{ book_detail.title }}" style="max-width: 300px;">
+                    {% else %}
+                        <p>No cover image available.</p>
+                    {% endif %}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Title</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{ book_detail.title }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Author</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{ book_detail.author }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Category</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{ book_detail.category_name}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">ISBN</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{ book_detail.isbn }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Publication Date</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{ book_detail.published_date }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Description</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{ book_detail.description }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9 text-secondary">
+                       <a href = '/book/list' class="btn btn-primary btn-sm">Back</a>
+                    </div>
+                </div>
+    </form>
+</div>
+</div>
+{% endblock %}
