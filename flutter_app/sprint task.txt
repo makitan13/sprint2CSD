@@ -1,0 +1,26 @@
+Sprint 3
+- Flutter introduction
+- Android environment
+
+Expected:
+New trainee is able to create a flutter app connected to simple library website to perform these actions:
+A. As a Member:
+- Register as new member
+- Login as member
+- Logout as member
+- Change profile information
+- Change password
+- List all books by category
+- Search book by title
+- Viewing for detailed info of a book
+- Loan a selected book
+- List currently loaned book and its due date
+
+B. As a Librarian
+- Login as librarian
+- Logout as librarian
+- Change password
+- View near outstanding book loans
+- View overdue book loans
+
+App design is not required to be good, but should be functional. A material based design is okay.
